@@ -528,7 +528,8 @@ a.card:hover {
 .resource--game,
 .resource--site,
 .resource--video,
-.resource--fact {
+.resource--fact,
+.resource--exercise {
   border-left-color: var(--turquoise);
 }
 
@@ -547,7 +548,8 @@ a.card:hover {
 .resource--game .resource__type,
 .resource--site .resource__type,
 .resource--video .resource__type,
-.resource--fact .resource__type {
+.resource--fact .resource__type,
+.resource--exercise .resource__type {
   background: #e3f7f4;
   color: var(--turquoise-dark);
 }

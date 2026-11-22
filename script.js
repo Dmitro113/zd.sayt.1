@@ -79,7 +79,8 @@ const SOCIALS = [
    Щоб додати нове, скопіюйте будь-який блок { ... }, змініть
    рядки й додайте кому в кінці. Нічого більше правити не треба.
 
-   type:  'pdf' | 'book' | 'doc' | 'site' | 'game' | 'video' | 'test' | 'course' | 'fact'
+   type:  'pdf' | 'book' | 'doc' | 'site' | 'game' | 'video' | 'test' | 'course' | 'fact' | 'exercise'
+   url:   посилання https://… або файл на сайті, напр. 'docs/ktp-informatyka-5.pdf' (шлях від кореня сайту)
    official: true — додає значок «Офіційний ресурс» (МОН, Мінцифри, кіберполіція тощо)
    news — сторінка «Новинки/Цікавинки» (where: ['news'])
    where: на яких сторінках показати ресурс (адреса без .html):
@@ -141,6 +142,22 @@ const RESOURCES = [
     where: ['teachers/9/textbooks', 'students/9/materials'],
   },
 
+  // ---------- 9 клас: одновимірні масиви, списки в Python ----------
+  {
+    title: 'Одновимірні масиви. Списки в Python — матеріал до уроку',
+    desc: 'Проблема, масив і список у Python, цикл for, міні-проєкт «Аналізатор успішності класу» у Thonny. 9 клас, 10 сторінок.',
+    type: 'pdf',
+    url: 'docs/python-spysky-9-klas.pdf',
+    where: ['students/9/materials', 'students/9/practice', 'teachers/9/materials'],
+  },
+  {
+    title: 'Що виведе програма? Масив a = [8, 10, 12, 7, 9]',
+    desc: 'Поєднайте вираз з його результатом. Інтерактивна вправа LearningApps до уроку про списки в Python, домашнє завдання.',
+    type: 'exercise',
+    url: 'https://learningapps.org/watch?v=pt0zxdspa26',
+    where: ['students/9/practice', 'teachers/9/materials'],
+  },
+
   // ---------- Для вчителів ----------
   {
     title: 'Календарно-тематичне планування, 5 клас',
@@ -150,11 +167,46 @@ const RESOURCES = [
     where: ['teachers/5/planning'],
   },
   {
+    title: 'Поурочне планування, 5 клас',
+    desc: '2 години на тиждень, 70 годин на рік. Теми уроків, домашні завдання за параграфами підручника, посилання на презентації до уроків. Автор: Вадим Пархомчук (vseosvita.ua).',
+    type: 'pdf',
+    url: 'docs/ktp-informatyka-5.pdf',
+    where: ['teachers/5/planning'],
+  },
+  {
+    title: 'Поурочне планування, 6 клас',
+    desc: '2 години на тиждень, 70 годин на рік. Теми уроків, домашні завдання за параграфами підручника, посилання на презентації до уроків. Автор: Вадим Пархомчук (vseosvita.ua).',
+    type: 'pdf',
+    url: 'docs/ktp-informatyka-6.pdf',
+    where: ['teachers/6/planning'],
+  },
+  {
+    title: 'Поурочне планування, 7 клас',
+    desc: '1,5 години на тиждень, 52 години на рік. Теми уроків, домашні завдання за параграфами підручника, посилання на презентації до уроків. Автор: Вадим Пархомчук (vseosvita.ua).',
+    type: 'pdf',
+    url: 'docs/ktp-informatyka-7.pdf',
+    where: ['teachers/7/planning'],
+  },
+  {
+    title: 'Поурочне планування, 8 клас',
+    desc: '2 години на тиждень, 70 годин на рік. Теми уроків, домашні завдання за параграфами підручника, посилання на презентації до уроків. Автор: Вадим Пархомчук (vseosvita.ua).',
+    type: 'pdf',
+    url: 'docs/ktp-informatyka-8.pdf',
+    where: ['teachers/8/planning'],
+  },
+  {
+    title: 'Поурочне планування, 9 клас',
+    desc: '2 години на тиждень, 70 годин на рік. Теми уроків, домашні завдання за параграфами підручника, посилання на презентації до уроків. Автор: Вадим Пархомчук (vseosvita.ua).',
+    type: 'pdf',
+    url: 'docs/ktp-informatyka-9.pdf',
+    where: ['teachers/9/planning'],
+  },
+  {
     title: 'Модельна навчальна програма «Інформатика», 5–6 класи',
-    desc: 'Ривкінд Й. Я., Лисенко Т. І., Чернікова Л. А., Шакотько В. В. (сайт МОН).',
+    desc: 'Рекомендовано МОН (наказ від 12.07.2021 № 795). Автори: Ривкінд Й. Я., Лисенко Т. І., Чернікова Л. А., Шакотько В. В. Документ з сайту МОН, 22 сторінки.',
     type: 'pdf',
     official: true,
-    url: 'https://mon.gov.ua/static-objects/mon/sites/1/zagalna%20serednya/Navchalni.prohramy/2021/14.07/Model.navch.prohr.5-9.klas.NUSH-poetap.z.2022/Inform.osv.haluz.5-6-kl/Inform.5-6-kl.Ryvkind.ta.in.14.07.pdf',
+    url: 'docs/model-prohrama-informatyka-5-6.pdf',
     where: pages('teachers', 'programs', [5, 6]),
   },
   {
@@ -458,6 +510,7 @@ const RESOURCE_TYPES = {
   test: 'Тест',
   course: 'Курс',
   fact: 'Цікавинка',
+  exercise: 'Інтерактивна вправа',
 };
 
 /* ===================================================== */
@@ -619,11 +672,14 @@ function renderResources() {
   // Там, де є ресурси, текст-заглушка вже не потрібен
   container.querySelectorAll('.placeholder').forEach((el) => el.remove());
 
+  // Файл на сайті (docs/…) відкривається від кореня сайту, зовнішнє посилання — як є
+  const hrefOf = (r) => (/^https?:\/\//.test(r.url) ? r.url : ROOT + r.url);
+
   const cards = items
     .map(
       (r) => `
       <li>
-        <a class="resource resource--${esc(r.type)}" href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">
+        <a class="resource resource--${esc(r.type)}" href="${esc(hrefOf(r))}" target="_blank" rel="noopener noreferrer">
           <span class="resource__tags">
             <span class="resource__type">${esc(RESOURCE_TYPES[r.type] || 'Посилання')}</span>
             ${r.official ? '<span class="resource__official">Офіційний ресурс</span>' : ''}
@@ -656,7 +712,9 @@ function renderStats() {
 
   const urls = new Set(RESOURCES.map((r) => r.url));
   const official = new Set(RESOURCES.filter((r) => r.official).map((r) => r.url));
-  const sites = new Set(RESOURCES.map((r) => new URL(r.url).hostname.replace(/^www\./, '')));
+  const sites = new Set(
+    RESOURCES.filter((r) => /^https?:\/\//.test(r.url)).map((r) => new URL(r.url).hostname.replace(/^www\./, ''))
+  );
 
   const values = {
     grades: [GRADES.length, ['клас', 'класи', 'класів']],
